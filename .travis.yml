@@ -14,7 +14,4 @@ env:
 
 script:
   - bundle exec kitchen verify ${INSTANCE}
-  - sudo salt-call grains.items --local
-
-after_script:
   - sudo cat /etc/apache2/apache2.conf
