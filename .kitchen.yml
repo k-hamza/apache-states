@@ -45,7 +45,7 @@ suites:
             - apache
     verifier:
       name: shell
-      remote_exec: false
+      remote_exec: true
       command: sudo cat /etc/apache2/apache2.conf
   - name: apache_norestart
     provisioner:
