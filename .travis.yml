@@ -13,8 +13,8 @@ env:
     - INSTANCE: default-debian-9
 
 script:
-  - sudo salt-call grains.items --local
   - bundle exec kitchen verify ${INSTANCE}
+  - sudo salt-call grains.items --local
 
 after_script:
   - sudo cat /etc/apache2/apache2.conf
