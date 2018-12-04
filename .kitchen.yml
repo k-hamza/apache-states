@@ -43,6 +43,10 @@ suites:
         base:
           '*':
             - apache
+    verifier:
+      name: shell
+      remote_exec: false
+      command: sudo cat /etc/apache2/apache2.conf
   - name: apache_norestart
     provisioner:
       state_top:
@@ -53,8 +57,3 @@ suites:
         apache.sls:
           apache:
             manage_service_states: False
-
-verifier:
-  name: shell
-  remote_exec: false
-  command: sudo cat /etc/apache2/apache2.conf
