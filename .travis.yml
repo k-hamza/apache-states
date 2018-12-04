@@ -14,4 +14,3 @@ env:
 
 script:
   - bundle exec kitchen verify ${INSTANCE}
-  - sudo cat /etc/apache2/apache2.conf

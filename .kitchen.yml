@@ -53,3 +53,8 @@ suites:
         apache.sls:
           apache:
             manage_service_states: False
+
+verifier:
+  name: shell
+  remote_exec: false
+  command: sudo cat /etc/apache2/apache2.conf
