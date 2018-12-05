@@ -45,7 +45,7 @@ suites:
             - apache
     verifier:
       name: shell
-      remote_exec: true
+      remote_exec: false
       patterns:
         - test/shell/test.sh
       command: sudo bash ./test/shell/test.sh
