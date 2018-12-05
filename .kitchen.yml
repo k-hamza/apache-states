@@ -50,8 +50,9 @@ suites:
         - test/shell/test.sh
       command: |
         pwd
+        chmod +x /tmp/kitchen/data/shell/test.sh
         ls -l /tmp/kitchen/data/shell/test.sh
-        bash ./tmp/kitchen/data/shell/test.sh
+        bash /tmp/kitchen/data/shell/test.sh
   - name: apache_norestart
     provisioner:
       state_top:
