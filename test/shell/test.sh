@@ -1,4 +1,4 @@
-#!/usr/bin/ksh
+#!/bin/ksh
 
 conf_file=/etc/apache2/apache2.conf
 if [ "${KITCHEN_INSTANCE_NAME}" == "default-centos-7" ]

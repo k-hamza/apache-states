@@ -14,6 +14,7 @@ provisioner:
   name: salt_solo
   formula: apache
   require_chef: false
+  is_file_root: true
   data_path: test/shared
   pillars:
     top.sls:
@@ -46,7 +47,7 @@ suites:
     verifier:
       name: shell
       remote_exec: false
-      command: sudo sh ./test/shell/test.sh
+      command: sudo bash ./test/shell/test.sh
   - name: apache_norestart
     provisioner:
       state_top:
