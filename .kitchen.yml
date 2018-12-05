@@ -48,7 +48,7 @@ suites:
       remote_exec: false
       patterns:
         - test/shell/test.sh
-      command: sudo bash ./test/shell/test.sh
+      command: bash ./test/shell/test.sh
   - name: apache_norestart
     provisioner:
       state_top:
