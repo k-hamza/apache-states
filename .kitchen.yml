@@ -14,8 +14,7 @@ provisioner:
   name: salt_solo
   formula: apache
   require_chef: false
-  is_file_root: true
-  data_path: test/shared
+  data_path: test
   pillars:
     top.sls:
       base:
