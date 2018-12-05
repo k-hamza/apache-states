@@ -6,4 +6,4 @@ then
   conf_file=/etc/httpd/conf/httpd.conf
 fi
 
-kitchen exec ${KITCHEN_INSTANCE} -c command(cat ${conf_file})
+kitchen exec ${KITCHEN_INSTANCE} -c cat ${conf_file}
