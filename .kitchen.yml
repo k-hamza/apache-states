@@ -46,7 +46,7 @@ suites:
     verifier:
       name: shell
       remote_exec: true
-      command: sudo sh /test/shell/test.sh
+      command: sudo sh ./test/shell/test.sh
   - name: apache_norestart
     provisioner:
       state_top:
