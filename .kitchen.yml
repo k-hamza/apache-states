@@ -50,8 +50,11 @@ suites:
         - test/shell/test.sh
       command: |
         pwd
-        ls -lR /home/kitchen/
-        bash ./home/kitchen/test/shell/test.sh
+        ls -lR /tmp/kitchen/
+        ls -lR /srv/salt/
+        ls -lR /home/travis/build
+        ls -lR /tmp/kitchen//srv/salt
+#         bash ./home/kitchen/test/shell/test.sh
   - name: apache_norestart
     provisioner:
       state_top:
