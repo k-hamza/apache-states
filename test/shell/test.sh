@@ -1,9 +1,9 @@
 #!/bin/ksh
 
 conf_file=/etc/apache2/apache2.conf
-if [ "${KITCHEN_INSTANCE_NAME}" == "default-centos-7" ]
+if [ "${KITCHEN_INSTANCE}" == "default-centos-7" ]
 then
   conf_file=/etc/httpd/conf/httpd.conf
 fi
 
-cat ${conf_file}
+kitchen exec ${KITCHEN_INSTANCE} -c command(cat ${conf_file})
