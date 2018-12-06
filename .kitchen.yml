@@ -24,8 +24,8 @@ provisioner:
       apache:
         manage_service_states: False
         VirtualHost:
-          example.com:      # <-- site_name : can be the real ServerName or a virtual name
-            item: '*:8080'    # simple example
+          example.com:
+            item: '*:8080'
             directives:
               - ServerAdmin: 'webmaster@example.com'
               - LogLevel: 'warn'
@@ -44,6 +44,7 @@ suites:
           '*':
             - apache
             - apache.config-ng
+            - apache.vhosts.vhost-ng
             - apache.modules-ng
     verifier:
       name: shell
