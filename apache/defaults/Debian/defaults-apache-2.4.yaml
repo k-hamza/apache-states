@@ -1,0 +1,54 @@
+# defaults for Debian apache2.conf
+
+# The data structure is a little bit different with pillar structure
+# ``directives_multiple`` list are directives that can be present multiple time in conf file
+# if the same directive is present in pillar, it will be appended to the defaults ones
+# there will be no replacement of values
+server_apache_config:
+  directives:
+    - ServerRoot: '"/etc/apache2"'
+    - ErrorLog: '"/var/log/httpd/error.log"'
+    - LogLevel: 'warn core:info'
+    - Timeout: '300'
+    - KeepAlive: 'On'
+    - MaxKeepAliveRequests: 100
+    - KeepAliveTimeout: 5
+    - HostnameLookups: 'Off'
+    - IncludeOptional: 'mods-enabled/*.load'
+    - IncludeOptional: 'mods-enabled/*.conf'
+    - IncludeOptional: 'conf-enabled/*.conf'
+    - IncludeOptional: 'sites-enabled/*.conf'
+    - Include: 'ports.conf'
+    - AccessFileName: '.htaccess'
+    - CustomLog: '"/var/log/httpd/access.log" vhost_combined'
+  directives_multiple:   # <-- Theses directives are appended as it to pillar content
+    - LogFormat: '"%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined'
+    - LogFormat: '"%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined'
+    - LogFormat: '"%h %l %u %t \"%r\" %>s %O" common'
+    - LogFormat: '"%{Referer}i -> %U" referer'
+    - LogFormat: '"%{User-agent}i" agent'
+
+  containers:
+    Directory:
+      -
+        item: '/'
+        directives:
+          - AllowOverride: 'None'
+          - Options: 'FollowSymLinks'
+          - Require: 'all denied'
+      -
+        item: '/usr/share'
+        directives:
+          - AllowOverride: 'None'
+          - Require: 'all granted'
+      -
+        item: '/var/www/'
+        directives:
+          - AllowOverride: 'None'
+          - Options: 'Indexes FollowSymLinks'
+          - Require: 'all granted'
+    FilesMatch:
+      -
+        item: '"^\.ht"'
+        directives:
+          - Require: 'all denied'
